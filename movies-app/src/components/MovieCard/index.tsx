@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Movie } from "@/types/movie";
 import StarRating from "../StarRating";
 import "./index.scss";
@@ -29,7 +30,9 @@ export default function MovieCard(props: Props) {
                 : movie.overview}
             </p>
           )}
-          <button className="btn-default">Ver mais...</button>
+          <Link href={`/movie/${movie.id}`}>
+            <button className="btn-default">Ver mais...</button>
+          </Link>
         </div>
       </div>
     </li>

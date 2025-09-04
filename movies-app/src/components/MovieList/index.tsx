@@ -10,12 +10,13 @@ export default function MovieList() {
   useEffect(() => {
     getMovies();
   }, []);
+  const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const getMovies = () => {
     axios({
       method: "get",
       url: "https://api.themoviedb.org/3/discover/movie",
       params: {
-        api_key: "c5fb768f32b61d107d8da18aef8e183b",
+        api_key: `${apiKey}`,
         language: "pt-BR"
       }
     }).then((response) => {
