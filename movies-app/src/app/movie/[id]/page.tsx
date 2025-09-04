@@ -1,5 +1,4 @@
 import MovieDetail from "@/components/MovieDetails";
-import { Metadata } from "next";
 
 interface Params {
   id: string;
