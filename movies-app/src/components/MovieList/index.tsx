@@ -8,8 +8,11 @@ import { Movie } from "@/types/movie";
 export default function MovieList() {
   const [movies, setMovies] = useState<Movie[]>([]);
   useEffect(() => {
-    getMovies();
-  }, []);
+  const fetchMovies = async () => {
+    await getMovies();
+  };
+  fetchMovies();
+}, []);
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const getMovies = () => {
     axios({
