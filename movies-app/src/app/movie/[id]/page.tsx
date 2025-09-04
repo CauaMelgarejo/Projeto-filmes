@@ -1,12 +1,10 @@
 import MovieDetail from "@/components/MovieDetails";
 
-type Props = {
-  params: {
-    id: string;
-  };
-};
+interface PageProps {
+  params: { id: string };
+}
 
-export default function Details({ params }: Props) {
+export default async function Details({ params }: PageProps) {
   return (
     <div>
       <MovieDetail id={params.id} />
