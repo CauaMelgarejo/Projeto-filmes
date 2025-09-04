@@ -34,6 +34,10 @@ interface MovieDetailProps {
   id: string;
 }
 
+interface PageProps {
+  params: { id: string };
+}
+
 export default function MovieDetail({ id }: MovieDetailProps) {
   const [movie, setMovie] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState(true);
