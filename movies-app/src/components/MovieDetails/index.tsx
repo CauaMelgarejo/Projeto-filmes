@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import StarRating from "@/components/StarRating";
+
 import "./index.scss";
+
 import Loading from "@/components/Loading";
 
 interface Cast {
@@ -33,11 +36,12 @@ interface MovieDetails {
 interface MovieDetailProps {
   id: string;
 }
+
 export default function MovieDetail({ id }: MovieDetailProps) {
   const [movie, setMovie] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState(true);
 
-   useEffect(() => {
+  useEffect(() => {
     if (!id) return;
 
     const fetchMovie = async () => {
@@ -94,11 +98,9 @@ export default function MovieDetail({ id }: MovieDetailProps) {
             </div>
           )}
 
-
           <p className="director">
             <strong>Diretor:</strong> {director?.name || "Desconhecido"}
           </p>
-
 
           <p className="overview">{movie.overview || "Sem sinopse."}</p>
 
