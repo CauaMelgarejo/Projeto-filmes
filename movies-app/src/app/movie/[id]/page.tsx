@@ -1,7 +1,6 @@
 import MovieDetail from "@/components/MovieDetails";
 
-export default async function Details({ params }: { params: { id: string } }) {
-  // Se precisar buscar dados do servidor, pode usar await aqui
+export default async function Details({ params }: any) {
   return (
     <div>
       <MovieDetail id={params.id} />
