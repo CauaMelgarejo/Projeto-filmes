@@ -1,36 +1,7 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Movie } from "@/types/movie";
-import MovieList from "@/components/MovieList";
+import SearchResults from "@/components/SearchResults";
 
 export default function SearchPage() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get("query");
-  const [results, setResults] = useState<Movie[]>([]);
-
-  useEffect(() => {
-    if (!query) return;
-
-    const fetchMovies = async () => {
-      try {
-        const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
-        const res = await fetch(
-          `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}&language=pt-BR`
-        );
-        const data = await res.json();
-        setResults(data.results || []);
-      } catch (error) {
-        console.error("Erro ao buscar filmes:", error);
-      }
-    };
-
-    fetchMovies();
-  }, [query]);
-
-  if (!query) return <p>Digite algo para buscar.</p>;
-  if (results.length === 0) return <p>Nenhum resultado encontrado.</p>;
-
-  return <MovieList movies={results} />;
+  return <SearchResults />;
 }
