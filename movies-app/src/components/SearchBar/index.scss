@@ -1,0 +1,27 @@
+/* src/components/SearchBar.scss */
+
+.search-input {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  border: 2px solid #6046ff;
+  outline: none;
+  font-size: 0.9rem;
+  width: 200px;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  color: #0f172a;
+
+  &::placeholder {
+    color: #999;
+  }
+
+  &:focus {
+    border-color: #3023ff;
+    box-shadow: 0 0 5px rgba(96, 70, 255, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    width: 150px; /* menor em telas pequenas */
+    font-size: 0.85rem;
+  }
+}

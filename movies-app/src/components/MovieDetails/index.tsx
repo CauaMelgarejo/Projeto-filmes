@@ -1,12 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import StarRating from "@/components/StarRating";
-
 import "./index.scss";
-
 import Loading from "@/components/Loading";
+import { useFavorites } from "@/hooks/useFavorites";
 
 interface Cast {
   id: number;
@@ -40,6 +38,18 @@ interface MovieDetailProps {
 export default function MovieDetail({ id }: MovieDetailProps) {
   const [movie, setMovie] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState(true);
+  // hook de favoritos
+  const { addFavorite, removeFavorite, isFavorite } = useFavorites();
+
+  const toggleFavorite = () => {
+    if (movie) {
+      if (isFavorite(movie.id)) {
+        removeFavorite(movie.id);
+      } else {
+        addFavorite(movie);
+      }
+    }
+  };
 
   useEffect(() => {
     if (!id) return;
@@ -126,6 +136,16 @@ export default function MovieDetail({ id }: MovieDetailProps) {
               )}
             </div>
           </div>
+          <button
+            className={`favorite-button ${
+              isFavorite(movie?.id!) ? "active" : ""
+            }`}
+            onClick={toggleFavorite}
+          >
+            {isFavorite(movie?.id!)
+              ? "Remover dos favoritos"
+              : "Adicionar aos favoritos"}
+          </button>
         </div>
       </div>
     </div>

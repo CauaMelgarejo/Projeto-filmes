@@ -23,10 +23,16 @@
 
     .poster {
       flex: 0 0 300px;
+
       img {
         width: 100%;
         border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.7);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
 
@@ -35,6 +41,7 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      text-align: left;
 
       h1 {
         font-size: 2.5rem;
@@ -48,29 +55,64 @@
         font-size: 1.2rem;
       }
 
-      .director {
-        font-size: 1rem;
-        margin: 1rem 0;
-      }
-
+      .director,
       .overview {
         font-size: 1rem;
-        line-height: 1.5;
+        margin: 0.5rem 0;
+      }
+
+      .favorite-button {
+        background-color: transparent;
+        border: 2px solid #6046ff;
+        color: #6046ff;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        width: 50%;
+        display: block;
+        margin: 1rem auto;
+        text-align: center;
+
+        &:hover {
+          background-color: #6046ff;
+          color: #fff;
+          transform: scale(1.05);
+        }
+
+        &.active {
+          background-color: #6046ff;
+          color: #fff;
+        }
+
+        &:focus {
+          outline: none;
+        }
       }
 
       .cast {
         margin-top: 1rem;
 
+        strong {
+          display: block;
+          margin-bottom: 0.5rem;
+        }
+
         .cast-list {
           display: flex;
+          flex-wrap: wrap;
           gap: 1rem;
           margin-top: 0.5rem;
+          justify-content: flex-start;
 
           .actor {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 80px;
+            text-align: center;
 
             img {
               width: 80px;
@@ -78,6 +120,12 @@
               object-fit: cover;
               border-radius: 5px;
               margin-bottom: 0.3rem;
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+              &:hover {
+                transform: scale(1.1);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+              }
             }
 
             .no-image {
@@ -95,6 +143,7 @@
             span {
               font-size: 0.8rem;
               text-align: center;
+              word-break: break-word;
             }
           }
         }
@@ -104,16 +153,14 @@
 }
 
 /* Responsivo */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .movie-container {
     flex-direction: column;
     align-items: center;
+    padding: 3rem 1.5rem;
 
-    .poster {
-      flex: 0 0 auto;
-      img {
-        width: 200px;
-      }
+    .poster img {
+      width: 220px;
     }
 
     .info {
@@ -122,6 +169,37 @@
       .cast-list {
         justify-content: center;
       }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-container {
+    padding: 2rem 1rem;
+
+    .poster img {
+      width: 160px;
+      height: auto;
+    }
+
+    .info h1 {
+      font-size: 1.8rem;
+    }
+
+    .rating {
+      font-size: 1rem;
+    }
+
+    .cast .actor img,
+    .cast .actor .no-image {
+      width: 60px;
+      height: 90px;
+    }
+
+    .favorite-button {
+      width: 70%;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.85rem;
     }
   }
 }

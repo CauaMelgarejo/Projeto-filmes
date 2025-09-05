@@ -1,10 +1,47 @@
-.navbar{
-    background-color: #0f172a;
-    padding: 12px 3%;
-    .link{
-        text-decoration: none;
+/* src/components/NavBar/index.scss */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background-color: #0f172a;
+  color: #fff;
+  flex-wrap: wrap;
+
+  .link {
+    text-decoration: none;
+    color: #fff;
+    h1.page-title {
+      margin: 0;
+      font-size: 1.5rem;
     }
-    .page-title{
-        color: #ffff;
+  }
+
+  .favorites-link {
+    position: relative;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+
+    .badge {
+      position: absolute;
+      top: -5px;
+      right: -10px;
+      background-color: #ff0000;
+      color: #fff;
+      border-radius: 50%;
+      padding: 0 6px;
+      font-size: 0.75rem;
+      font-weight: bold;
     }
+  }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    gap: 1rem;
+    .page-title {
+      font-size: 1.2rem;
+    }
+  }
 }
