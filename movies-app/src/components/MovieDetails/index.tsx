@@ -137,15 +137,13 @@ export default function MovieDetail({ id }: MovieDetailProps) {
             </div>
           </div>
           <button
-            className={`favorite-button ${
-              isFavorite(movie?.id!) ? "active" : ""
-            }`}
-            onClick={toggleFavorite}
-          >
-            {isFavorite(movie?.id!)
-              ? "Remover dos favoritos"
-              : "Adicionar aos favoritos"}
-          </button>
+  className={`favorite-button ${movie && isFavorite(movie.id) ? "active" : ""}`}
+  onClick={toggleFavorite}
+>
+  {movie && isFavorite(movie.id)
+    ? "Remover dos favoritos"
+    : "Adicionar aos favoritos"}
+</button>
         </div>
       </div>
     </div>
